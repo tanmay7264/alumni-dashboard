@@ -2,10 +2,12 @@ type Props = {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  description?: string;
   action?: React.ReactNode;
 };
 
-export default function HeroHeader({ eyebrow, title, subtitle, action }: Props) {
+export default function HeroHeader({ eyebrow, title, subtitle, description, action }: Props) {
+  const text = subtitle ?? description;
   return (
     <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-800 via-navy-700 to-navy-600 text-white px-8 py-10 mb-8 shadow-card">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -22,7 +24,7 @@ export default function HeroHeader({ eyebrow, title, subtitle, action }: Props) 
             </div>
           )}
           <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-          {subtitle && <p className="text-navy-100 mt-2 max-w-2xl">{subtitle}</p>}
+          {text && <p className="text-navy-100 mt-2 max-w-2xl">{text}</p>}
         </div>
         {action && <div>{action}</div>}
       </div>
