@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #00457d;
+  --navy-mid: #1a588a;
+  --gold: #ffd300;
+}
+
+html, body {
+  background: #f5f7fa;
+  color: #1a202c;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- DARK MODE BASE --- */
+.dark body {
+  background-color: #00192d !important;
+  color: #f1f5f9 !important;
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-card border border-navy-50 transition-all;
+  }
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-navy-700 hover:bg-navy-800 text-white font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-900 font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-navy-200 text-navy-700 hover:bg-navy-50 font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50;
+  }
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg transition-colors;
+  }
+  .chip {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-navy-50 text-navy-700;
+  }
+  .chip-gold {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gold-200 text-navy-900;
+  }
+  .chip-green {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700;
+  }
+  .input {
+    @apply w-full px-4 py-2 bg-navy-50 rounded-lg text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-navy-300 focus:bg-white transition-all;
+  }
+  .select {
+    @apply px-4 py-2 bg-navy-50 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-300;
+  }
+}
+
+/* --- DARK MODE SPECIFIC COMPONENT OVERRIDES --- */
+.dark .card {
+  background-color: #002f55 !important;
+  border-color: #003a6a !important;
+}
+.dark .card-hover:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3) !important;
+}
+.dark .input, .dark .select {
+  background-color: #001f3f !important;
+  color: #ffffff !important;
+  border-color: #003a6a !important;
+}
+.dark .input:focus, .dark .select:focus {
+  background-color: #002f55 !important;
+}
+.dark .btn-outline {
+  border-color: #1a588a !important;
+  color: #e2e8f0 !important;
+}
+.dark .btn-outline:hover {
+  background-color: #001f3f !important;
+}
+.dark .chip {
+  background-color: #001f3f !important;
+  color: #e2e8f0 !important;
+}
+.dark .chip-gold {
+  background-color: #664d00 !important;
+  color: #ffd300 !important;
+}
+.dark .chip-green {
+  background-color: #064e3b !important;
+  color: #34d399 !important;
+}
+
+/* --- DARK MODE UTILITY OVERRIDES --- */
+.dark .bg-white { background-color: #002f55 !important; }
+.dark .bg-white\/80 { background-color: rgba(0, 47, 85, 0.8) !important; }
+.dark .bg-navy-50 { background-color: #001f3f !important; }
+.dark .bg-navy-100 { background-color: #003a6a !important; }
+
+.dark .text-navy-900 { color: #ffffff !important; }
+.dark .text-navy-700 { color: #e2e8f0 !important; }
+.dark .text-gray-500, .dark .text-gray-600 { color: #94a3b8 !important; }
+.dark .text-gray-700 { color: #e2e8f0 !important; }
+
+.dark .border-navy-50 { border-color: #003a6a !important; }
+.dark .border-navy-100 { border-color: #00457d !important; }
+.dark .border-navy-200 { border-color: #1a588a !important; }
+.dark .border-gray-200, .dark .border-gray-300 { border-color: #334155 !important; }
+
+/* Sidebar specific overrides */
+.dark aside .bg-white { background-color: #1a588a !important; }
+.dark aside .text-navy-700 { color: #ffffff !important; }
+.dark aside .w-10.h-10.bg-white { background-color: #ffd300 !important; color: #002f55 !important; }
+
+/* Topbar specific overrides */
+.dark header button:hover { background-color: #003a6a !important; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+.animate-in { animation-duration: 0.2s; animation-fill-mode: both; }
+.fade-in { animation-name: fadeIn; }
+.slide-in-from-right-2 { animation-name: slideInRight; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
